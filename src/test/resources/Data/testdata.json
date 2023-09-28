@@ -1,0 +1,29 @@
+[
+  {
+    "account": {
+      "email": "user1@yahoo.com",
+      "password": "",
+      "browser": "chrome"
+    },
+    "emailError": "",
+    "passwordError": "Parola este obligatorie"
+  },
+  {
+    "account": {
+      "email": "",
+      "password": "test",
+      "browser": "edge"
+    },
+    "emailError": "Adresa de e-mail este obligatorie",
+    "passwordError": ""
+  },
+  {
+    "account": {
+      "email": "",
+      "password": "",
+      "browser": "firefox"
+    },
+    "emailError": "Adresa de e-mail este obligatorie",
+    "passwordError": ""
+  }
+]
