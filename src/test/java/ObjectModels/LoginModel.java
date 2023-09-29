@@ -1,6 +1,5 @@
 package ObjectModels;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -11,7 +10,7 @@ public class LoginModel {
     public LoginModel() {
     }
 
-    public LoginModel(String email, String password, String browser, String emailError, String passwordError) { //  pentru CSV. Se dezactiveaza pentru JSON si XML
+    public LoginModel(String email, String password, String browser, String emailError, String passwordError) {
         AccountModel accountM = new AccountModel();
         accountM.setPassword(password);
         accountM.setEmail(email);
@@ -25,29 +24,13 @@ public class LoginModel {
         return account;
     }
 
-    @XmlElement
-    public void setAccount(AccountModel account) {
-        this.account = account;
-    }
-
     public String getEmailError() {
         return emailError;
-    }
-
-    @XmlElement
-    public void setEmailError(String emailError) {
-        this.emailError = emailError;
     }
 
     public String getPasswordError() {
         return passwordError;
     }
-
-    @XmlElement
-    public void setPasswordError(String passwordError) {
-        this.passwordError = passwordError;
-    }
-
 
     @Override
     public String toString() {

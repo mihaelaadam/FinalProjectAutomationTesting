@@ -20,14 +20,14 @@ public class RegistrationTest extends BaseTest {
 //                                                    assert getAttribute pentru registration email positive si addToCart pentru confirmara cantitatii din cos
 //                                                    cum identitific eroarea de la termeni si conditii?
 //                                                    cum pot sa fac sa functioneze registerAccountNDp cu cele 2 dataprovidere? - o sintaxa pentru a bloca inchiderea browserului?
-//                                                    drop-down list se blocheaza la clickul de deschidere a listei - rezolvat
+//                                                    drop-down list se blocheaza la clickul de deschidere a listei - rezolvat fara action. Nu merge cu action. Exp
 
     @DataProvider(name = "registerEmailNDp")
     public Object[][] registerEmailNegativeDp() {
         return new Object[][] {
                 {"user1","chrome", "Adresa de e-mail este invalida"},       //      termina-ma de completat cu soare@yahoo.com
                 {"","firefox", "Adresa de e-mail este invalida"},
-                {"user@","edge", "Adresa de e-mail este invalida"}
+                {"soare@yahoo.com","edge", "Exista deja un cont cu aceeasi adresa de e-mail. Introdu parola sau cere una noua."}
         };
     }
     @DataProvider (name = "registerEmailPDp")
@@ -40,15 +40,16 @@ public class RegistrationTest extends BaseTest {
 //    @DataProvider (name = "emailForRegisterAccount")
 //    public Object[][] insertEmailForInfoAccount() {
 //        return new Object[][] {
-//                {"soarece@yahoo.com"}
+//                {"parola@yahoo.com"}
 //        };
 //    }
     @DataProvider (name = "registerAccountNDp")
     public Object[][] registerInfoNegativeDp() {
         return new Object[][] {
-                {"Soarece", "","Parola", "chrome", "", "nume_de_familie", ""},      //  termina-ma de completat cu {"Soare", "Alexandra", "Parola", "firefox", "", "", "", ""}, (adica inca un element pentru eroarea de client deja existent
-                {"Soarece", "Fir", "", "firefox", "", "", "passwd"},
-                {"", "", "", "edge", "prenume", "nume_de_familie", "passwd"}
+                {"Soare", "","Parola", "chrome", "", "nume_de_familie", ""},
+                {"Soare", "Alexandra", "", "firefox", "", "", "passwd"},
+                {"", "", "", "edge", "prenume", "nume_de_familie", "passwd"},
+                {"Soare", "Alexandra", "Parola", "firefox", "", "", ""}
         };
     }
     @DataProvider (name = "registerAccountPDp")
@@ -125,7 +126,7 @@ public class RegistrationTest extends BaseTest {
         loginPage.goToLoginPage();
 
         registrationPage = new RegistrationPage(driver);
-        registrationPage.registerWithEmail("soarele@yahoo.com");
+        registrationPage.registerWithEmail("maximus@yahoo.com");
         registrationPage.clickCreateAccountButton();
         registrationPage.register(firstName, lastName, password);
         registrationPage.clickTermsCheckbox();
@@ -145,7 +146,7 @@ public class RegistrationTest extends BaseTest {
         loginPage.goToLoginPage();
 
         registrationPage = new RegistrationPage(driver);
-        registrationPage.registerWithEmail("sherkan@yahoo.com");
+        registrationPage.registerWithEmail("sherkan.maximus@yahoo.com");
         registrationPage.clickCreateAccountButton();
         registrationPage.register(firstName, lastName, password);
         registrationPage.clickTermsCheckbox();

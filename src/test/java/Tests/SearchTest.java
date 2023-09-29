@@ -13,7 +13,7 @@ public class SearchTest extends BaseTest {
         String descriereProdus = "pix alb";
         System.out.println("Search for: " + descriereProdus);
         loginPage = new LoginPage(driver);
-        loginPage.search("pix alb");
+        loginPage.search(descriereProdus);
         Assert.assertTrue(loginPage.getSuccesSearch().contains(descriereProdus));
     }
 

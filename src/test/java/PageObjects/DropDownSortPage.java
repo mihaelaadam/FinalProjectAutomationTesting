@@ -52,6 +52,12 @@ public class DropDownSortPage {
 //        actions.moveToElement(dropDownElements.get(dropDownOptionIndex)).click().build().perform();
 //    }
 
+//    instructiuni javascript in consola:
+//            document.getElementById('selectProductSort').offsetParent !== null;                             =       aduce true - daca e vizibil
+//            window.getComputedStyle(document.getElementById('selectProductSort')).display !== 'none';       =       aduce true - daca e afisat in mod vizual
+//            document.getElementById('selectProductSort').hasAttribute('disabled');                           =       aduce false - daca e clicabil
+
+
     public void openDropDownList(int dropDownOptionIndex) {
         wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         openDropDownBtn.click();

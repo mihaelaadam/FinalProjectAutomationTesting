@@ -69,7 +69,7 @@ public class AddToCartPage {
         wait.until(ExpectedConditions.visibilityOf(orderCompleted));
         return orderCompleted.getText();
     }
-    public String getQtyAdded() {
+    public String getQtyAdded() {                                                       //  nu aduce cantitatea din casuta
         wait.until(ExpectedConditions.visibilityOf(qtyAdded));
         return qtyAdded.getText();
     }

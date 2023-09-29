@@ -22,16 +22,18 @@ public class AddToCartTest extends BaseTest {
 
         addToCartPage = new AddToCartPage(driver);
         addToCartPage.addToCartItem();
-        Assert.assertTrue(addToCartPage.getItemAddedInShoppingCart().contains("Produsul a fost adaugat in cos cu succes!"));
         System.out.println("The item was been added to the shopping cart");
+        Assert.assertTrue(addToCartPage.getItemAddedInShoppingCart().contains("Produsul a fost adaugat in cos cu succes!"));
+
         addToCartPage.openShoppingCart();
         Assert.assertTrue(addToCartPage.getOrderCompleted().contains("Sumar comanda"), "Cosul dvs de cumparaturi este gol.");
         addToCartPage.addQtyCart();
-//        Assert.assertEquals(addToCartPage.getQtyAdded(), addToCartPage.getConfirmQty());
         System.out.println("1 piece of item has been added");
+//        Assert.assertEquals(addToCartPage.getQtyAdded(), "2");
+//      addToCartPage.getConfirmQty()       --      elementul e hidden
         addToCartPage.removeCart();
-        Assert.assertEquals(addToCartPage.getCartQty(), "0");
         System.out.println("Item removed from cart");
+        Assert.assertEquals(addToCartPage.getCartQty(), "0");
 
         accountPage = new AccountPage(driver);
         accountPage.submitLogoutPage();

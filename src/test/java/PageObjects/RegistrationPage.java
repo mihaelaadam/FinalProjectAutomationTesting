@@ -36,7 +36,7 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//div[@id='create_account_error']/ol/li")
     private WebElement errorListItem;
-    @FindBy(xpath = "//div[@class='alert alert-danger']//b[contains(text(),'prenume')]")       //      class = alert alert-danger  -   de ce da eroare cand e introdus intre ghinimele duble?
+    @FindBy(xpath = "//div[@class='alert alert-danger']//b[contains(text(),'prenume')]")
     private WebElement firstNameError;
     @FindBy(xpath = "//div[@class='alert alert-danger']//b[contains(text(),'nume_de_familie')]")
     private WebElement lastNameError;
@@ -59,24 +59,7 @@ public class RegistrationPage {
 
 
 
-//    public void verifyNewWindow() {
-//        WebElement accountCreationDiv = driver.findElement(By.className("account_creation"));
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("account_creation")));
-//        if (accountCreationDiv != null) {
-//            System.out.println("Elementul a fost găsit pe pagină.");
-//        } else {
-//            System.out.println("Elementul nu a fost găsit pe pagină.");
-//        }
-//    }
 
-//    for (String windowHandle : driver.getWindowHandles()) {
-//        driver.switchTo().window(windowHandle);
-//        if (driver.findElement(By.className("account_creation"))) {
-//            break;
-//        }
-//        System.out.println("I cant find the page");
-//    }
 
     public void waitForEmailRegErr() {
         wait.until(ExpectedConditions.visibilityOf(errorListItem));
