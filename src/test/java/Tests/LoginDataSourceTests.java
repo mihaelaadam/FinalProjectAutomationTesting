@@ -43,7 +43,6 @@ public class LoginDataSourceTests extends BaseTest {
 
     @DataProvider(name = "loginPositiveDp")
     public Iterator<Object[]> mysqlDpCollection() throws Exception {
-//        show DB connection details
         System.out.println("Use dbHostname:"+dbHostname);
         System.out.println("Use dbUser:"+dbUser);
         System.out.println("Use dbPort:"+dbPort);
