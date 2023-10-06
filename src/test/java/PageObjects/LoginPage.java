@@ -14,7 +14,7 @@ public class LoginPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    @FindBy(xpath = "//a[contains(@href,'luxurygifts.ro/login')]/strong")
+    @FindBy(xpath = "//a[@class='login']/strong")
     private WebElement loginPagebtn;
     @FindBy(id = "email")
     private WebElement emailInput;
@@ -23,13 +23,8 @@ public class LoginPage {
     @FindBy(id = "SubmitLogin")
     private WebElement loginBtn;
 
-    @FindBy(xpath = "//li[contains(text(),'Adresa de e-mail este obligatorie')]")
-    private WebElement emailErr;
-    @FindBy(xpath = "//li[contains(text(),'Parola este obligatorie')]")
-    private WebElement passErr;
-    @FindBy(xpath = "//p[contains(text(),'Nu, multumesc!')]")
-    private WebElement closePopup;
-
+    @FindBy(xpath = "//div[@class='alert alert-danger']//li")
+    private WebElement generalErr;
     @FindBy(xpath = "//input[@id='search_query_top'][1]")
     private WebElement searchBox;
     @FindBy(xpath = "//form[contains(@action,'luxurygifts.ro/search')]//button/span")
@@ -45,15 +40,9 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
     public void goToLoginPage() {
-        wait.until(ExpectedConditions.visibilityOf(loginPagebtn));
+        wait.until(ExpectedConditions.elementToBeClickable(loginPagebtn));
         loginPagebtn.click();
     }
-//    public void closePopup() {
-//        wait =new WebDriverWait(driver, Duration.ofSeconds(400));
-//        if (closePopup.isDisplayed()) {
-//            closePopup.click();
-//        }
-//    }
 
     public void search(String searchPen) {
         wait.until(ExpectedConditions.elementToBeClickable(searchBox));
@@ -70,22 +59,17 @@ public class LoginPage {
         passwordInput.sendKeys(pass);
         loginBtn.click();
     }
-    public String getPassErr() {
+    public String getGeneralErr() {
         try {
-            return passErr.getText();
-        } catch (NoSuchElementException ex) {
-            return "";
-        }
-
-    }
-    public String getEmailErr() {
-        try {
-            return emailErr.getText();
+            return generalErr.getText();
         } catch (NoSuchElementException ex) {
             return "";
         }
     }
-
+    public boolean loginButtonIsDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(loginPagebtn));
+        return loginPagebtn.isDisplayed();
+    }
 
     public String getLoginPagebtn() {
         wait.until(ExpectedConditions.visibilityOf(loginPagebtn));

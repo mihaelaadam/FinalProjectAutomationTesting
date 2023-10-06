@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Tests">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+    </listeners>
+    <test thread-count="5" name="Tests for add to cart">
+        <classes>
+            <class name="Tests.AddToCartTest"/>
+            <class name="Tests.RemoveFromCartTest"/>
+        </classes>
+    </test>
+</suite>

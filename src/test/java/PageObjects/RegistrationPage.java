@@ -3,7 +3,6 @@ package PageObjects;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
-import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -53,36 +52,32 @@ public class RegistrationPage {
 
 
     public void submitRegistrationPage() {
-        wait.until(ExpectedConditions.visibilityOf(submitRegistrationBtn));
+        wait.until(ExpectedConditions.elementToBeClickable(submitRegistrationBtn));
         submitRegistrationBtn.click();
     }
-
-
-
-
 
     public void waitForEmailRegErr() {
         wait.until(ExpectedConditions.visibilityOf(errorListItem));
     }
     public void clickCreateAccountButton() {
-        wait.until(ExpectedConditions.visibilityOf(createAccountBtn));
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountBtn));
         createAccountBtn.click();
     }
 
     public void registerWithEmail(String emailReg) {
-        wait.until(ExpectedConditions.elementToBeClickable(emailRegister));
+        wait.until(ExpectedConditions.visibilityOf(emailRegister));
         emailRegister.clear();
         emailRegister.sendKeys(emailReg);
     }
 
     public void clickTermsCheckbox() {
-        wait.until(ExpectedConditions.visibilityOf(termsBtn));
+        wait.until(ExpectedConditions.elementToBeClickable(termsBtn));
         termsBtn.click();
 
     }
 
     public void register(String firstName, String lastName, String passwordReg) {
-        wait.until(ExpectedConditions.elementToBeClickable(firstNameRegister));
+        wait.until(ExpectedConditions.visibilityOf(firstNameRegister));
         firstNameRegister.clear();
         firstNameRegister.sendKeys(firstName);
         lastNameRegister.clear();
@@ -120,7 +115,7 @@ public class RegistrationPage {
             return "";
         }
     }
-    public String getEmailInput() {                                     //          !!!!        Assert
+    public String getEmailInput() {
         wait.until(ExpectedConditions.visibilityOf(emailInput));
         return emailInput.getAttribute("value");
     }

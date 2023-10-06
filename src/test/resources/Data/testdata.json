@@ -5,25 +5,38 @@
       "password": "",
       "browser": "chrome"
     },
-    "emailError": "",
-    "passwordError": "Parola este obligatorie"
+    "generalError": "Parola este obligatorie"
   },
   {
     "account": {
       "email": "",
       "password": "test",
-      "browser": "edge"
+      "browser": "firefox"
     },
-    "emailError": "Adresa de e-mail este obligatorie",
-    "passwordError": ""
+    "generalError": "Adresa de e-mail este obligatorie"
   },
   {
     "account": {
       "email": "",
       "password": "",
-      "browser": "firefox"
+      "browser": "edge"
     },
-    "emailError": "Adresa de e-mail este obligatorie",
-    "passwordError": ""
+    "generalError": "Adresa de e-mail este obligatorie"
+  },
+  {
+    "account": {
+      "email": "user1@yahoo.com",
+      "password": "MiciuPiciu",
+      "browser": "chrome"
+    },
+    "generalError": "Autentificare esuata"
+  },
+  {
+    "account": {
+      "email": "soare@yahoo.com",
+      "password": "MaciuPiciu",
+      "browser": "chrome"
+    },
+    "generalError": "Autentificare esuata"
   }
 ]

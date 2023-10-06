@@ -1,6 +1,5 @@
 package PageObjects;
 
-//import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +15,6 @@ public class DropDownSortPage {
     WebDriver driver;
     WebDriverWait wait;
     Actions actions;
-//    private JavascriptExecutor jsExecutor;
 
     @FindBy(id = "selectProductSort")
     private WebElement openDropDownBtn;
@@ -35,28 +33,7 @@ public class DropDownSortPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
         actions = new Actions(driver);
-//        this.jsExecutor = (JavascriptExecutor) driver;
     }
-
-//    public void moveToButton() {
-//        wait = new WebDriverWait(driver,Duration.ofSeconds(30));
-//        jsExecutor.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", openDropDownBtn);
-//        System.out.println("Is Enabled: " + openDropDownBtn.isEnabled());
-//        System.out.println("Is Displayed: " + openDropDownBtn.isDisplayed());
-//        System.out.println("Location: " + openDropDownBtn.getLocation());
-//        wait.until(ExpectedConditions.visibilityOf(openDropDownBtn));       //      aici se blocheaza
-//        actions.moveToElement(openDropDownBtn).perform();
-//    }
-
-//    public void openDropDownList(int dropDownOptionIndex) {
-//        actions.moveToElement(dropDownElements.get(dropDownOptionIndex)).click().build().perform();
-//    }
-
-//    instructiuni javascript in consola:
-//            document.getElementById('selectProductSort').offsetParent !== null;                             =       aduce true - daca e vizibil
-//            window.getComputedStyle(document.getElementById('selectProductSort')).display !== 'none';       =       aduce true - daca e afisat in mod vizual
-//            document.getElementById('selectProductSort').hasAttribute('disabled');                           =       aduce false - daca e clicabil
-
 
     public void openDropDownList(int dropDownOptionIndex) {
         wait = new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -70,7 +47,5 @@ public class DropDownSortPage {
     public String getSelectedDropDownOption() {
         return selectedDropDownOptionElement.getText();
     }
-
-
 
 }

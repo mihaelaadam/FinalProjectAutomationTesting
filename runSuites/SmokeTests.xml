@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Tests">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+    </listeners>
+    <test thread-count="5" name="Smoke Tests for Luxury Gifts">
+        <classes>
+            <class name="Tests.LoginDataSourceTests">
+                <methods>
+                    <include name="loginWithSQLAsDataSource"/>
+                </methods>
+            </class>
+            <class name="Tests.RegistrationTest">
+                <methods>
+                    <include name="insertAccountDetailsPositiveDp"/>
+                </methods>
+            </class>
+            <class name="Tests.SearchTest"/>
+            <class name="Tests.DropDownSortTest"/>
+            <class name="Tests.AddToCartTest"/>
+            <class name="Tests.RemoveFromCartTest"/>
+            <class name="Tests.LogoutTest"/>
+        </classes>
+    </test>
+</suite>

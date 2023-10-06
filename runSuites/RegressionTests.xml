@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regresssion Tests">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+    </listeners>
+    <test thread-count="5" name="Regression Tests for Luxury Gifts">
+        <classes>
+            <class name="Tests.LoginDataSourceTests"/>
+            <class name="Tests.RegistrationTest"/>
+            <class name="Tests.SearchTest"/>
+            <class name="Tests.DropDownSortTest"/>
+            <class name="Tests.AddToCartTest"/>
+            <class name="Tests.RemoveFromCartTest"/>
+            <class name="Tests.LogoutTest"/>
+        </classes>
+    </test>
+</suite>

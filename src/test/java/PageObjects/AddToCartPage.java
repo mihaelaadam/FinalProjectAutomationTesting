@@ -25,8 +25,6 @@ public class AddToCartPage {
     private WebElement addQuantity;
     @FindBy(xpath = "//input[@class='cart_quantity_input']")
     private WebElement qtyAdded;
-    @FindBy(xpath = "//input[@name='quantity_3625_0_0_65195_hidden']")              //      !!!!!       Assert
-    private WebElement confirmQty;
     @FindBy(xpath = "//a[@class='cart_quantity_delete']")
     private WebElement removeFromCart;
     @FindBy(xpath = "//span[@class='ajax_cart_no_product']")
@@ -37,10 +35,7 @@ public class AddToCartPage {
         wait.until(ExpectedConditions.visibilityOf(removeFromCart));
         removeFromCart.click();
     }
-    public String getConfirmQty() {                                                 //      !!!!!       Assert
-        wait.until(ExpectedConditions.visibilityOf(confirmQty));
-        return confirmQty.getAttribute("value");
-    }
+
     public void addQtyCart() {
         wait.until(ExpectedConditions.visibilityOf(addQuantity));
         addQuantity.click();
@@ -69,10 +64,7 @@ public class AddToCartPage {
         wait.until(ExpectedConditions.visibilityOf(orderCompleted));
         return orderCompleted.getText();
     }
-    public String getQtyAdded() {                                                       //  nu aduce cantitatea din casuta
-        wait.until(ExpectedConditions.visibilityOf(qtyAdded));
-        return qtyAdded.getText();
-    }
+
     public String getCartQty() {
         wait.until(ExpectedConditions.visibilityOf(cartQty));
         return cartQty.getText();

@@ -3,7 +3,6 @@ package Tests;
 import ObjectModels.LoginModel;
 import PageObjects.AccountPage;
 import PageObjects.LoginPage;
-import Utils.Tools;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -21,11 +20,10 @@ public class LoginDataSourceTests extends BaseTest {
     LoginPage loginPage;
     AccountPage accountPage;
 
-    //------------------------JSON------------------------
+
     @DataProvider(name = "loginNegativeDp")
     public Iterator<Object[]> jsonDpCollection() throws IOException {
         Collection<Object[]> dp = new ArrayList<>();
-//      here we start json deserialization of json into LoginModel obj      --      convertirea unui set de date într-o formă utilizabilă
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src\\test\\resources\\Data\\testdata.json");
 
@@ -43,7 +41,6 @@ public class LoginDataSourceTests extends BaseTest {
     }
 
 
-    //------------------------MYSQL------------------------
     @DataProvider(name = "loginPositiveDp")
     public Iterator<Object[]> mysqlDpCollection() throws Exception {
 //        show DB connection details
@@ -51,16 +48,15 @@ public class LoginDataSourceTests extends BaseTest {
         System.out.println("Use dbUser:"+dbUser);
         System.out.println("Use dbPort:"+dbPort);
         System.out.println("Use dbSchema:"+dbSchema);
-        Collection<Object[]> dp = new ArrayList<>();    //  instantiere a obiectului de tip ArrayList si initializarea variabilei dp.  Lista va contine obiecte de tip array Object[]
-//        db connection
-        Connection connection = DriverManager.getConnection("jdbc:mysql://"+dbHostname+":"+dbPort+  //  jdbc - se pune by default.
-                "/"+dbSchema, dbUser,dbPassword);                                                       //  Realizeaza conexiunea la BD cu JDBC(Java Database Connectivity)
-        Statement statement = connection.createStatement();     //  Statement trimite instructiuni SQL la BD iar connection returneaza obiectul Statement
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM login_positive");   //  instantierea obiectului ResultSet si initializarea variabilei resultSet
+        Collection<Object[]> dp = new ArrayList<>();
+        Connection connection = DriverManager.getConnection("jdbc:mysql://"+dbHostname+":"+dbPort+
+                "/"+dbSchema, dbUser,dbPassword);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM login_positive");
         while (resultSet.next()){
             LoginModel lm = new LoginModel(resultSet.getString("email"), resultSet.getString("password"),
-                    resultSet.getString("browser"), resultSet.getString("emailError"), resultSet.getString("passwordError"));
-            dp.add(new Object[]{lm});                           //  resultSet stocheaza fix datele din interogarea SQL iar db stocheaza in LoginModel pentru a fi prelucrate ulterior
+                    resultSet.getString("browser"), resultSet.getString("generalError"));
+            dp.add(new Object[]{lm});
         }
         return dp.iterator();
     }
@@ -73,7 +69,7 @@ public class LoginDataSourceTests extends BaseTest {
 
     private void loginLmNeg(LoginModel lm) {
         System.out.println(lm);
-        loginNegative(lm.getAccount().getEmail(), lm.getAccount().getPassword(), lm.getAccount().getBrowser(), lm.getEmailError(), lm.getPasswordError());
+        loginNegative(lm.getAccount().getEmail(), lm.getAccount().getPassword(), lm.getAccount().getBrowser(), lm.getGeneralError());
     }
     private void loginLmPos(LoginModel lm) {
         System.out.println(lm);
@@ -81,7 +77,7 @@ public class LoginDataSourceTests extends BaseTest {
     }
 
 
-        private void loginNegative(String email, String password, String browser, String emailErr, String passErr) {  //  1
+        private void loginNegative(String email, String password, String browser, String error) {
             System.out.println("Login with email:" + email + "/password:" + password + "=> on browser:" + browser);
             setUpDriver(browser);
             driver.get(baseUrl);
@@ -90,8 +86,7 @@ public class LoginDataSourceTests extends BaseTest {
             loginPage.login(email, password);
 
             System.out.println("Login Finished, verify error message");
-            Assert.assertEquals(loginPage.getEmailErr(), emailErr);
-            Assert.assertEquals(loginPage.getPassErr(), passErr);
+            Assert.assertEquals(loginPage.getGeneralErr(), error);
         }
     private void loginPositive(String email, String password, String browser) {  //  1
         System.out.println("Login with email:" + email + "/password:" + password + "=> on browser:" + browser);
@@ -103,7 +98,7 @@ public class LoginDataSourceTests extends BaseTest {
 
         System.out.println("Login Finished");
         accountPage = new AccountPage(driver);
-        Assert.assertEquals(accountPage.getLogoutBtn(), "Logout");
+        Assert.assertTrue(accountPage.logoutButtonIsDisplayed());
     }
 
 }

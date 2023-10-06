@@ -12,12 +12,12 @@ import java.time.Duration;
 public class AccountPage {
     WebDriver driver;
     WebDriverWait wait;
-    @FindBy(xpath = "//a[@class='logout']/strong")
+    @FindBy(xpath = "//a[@class='logout']")
     private WebElement logoutBtn;
     @FindBy(xpath = "//a[@class='account']/span")
     private WebElement name;
 
-    public boolean logoutButtonIsDisplayed() {      //      nu vrea assertul sa mearga
+    public boolean logoutButtonIsDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(logoutBtn));
         return logoutBtn.isDisplayed();
     }
