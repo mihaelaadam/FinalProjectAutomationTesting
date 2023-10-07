@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class RegistrationPage {
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private Actions actions;
 
     @FindBy(xpath = "//input[@id='email_create']")
     private WebElement emailRegister;

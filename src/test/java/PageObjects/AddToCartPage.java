@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AddToCartPage {
-    WebDriver driver;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
     @FindBy(xpath = "//a[@class='button ajax_add_to_cart_button btn']")
     private WebElement addToCartBtn;
     @FindBy(xpath = "//a[@title='Finalizeaza comanda']/span")

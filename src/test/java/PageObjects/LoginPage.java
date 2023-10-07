@@ -11,8 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage {
-    WebDriver driver;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
     @FindBy(xpath = "//a[@class='login']/strong")
     private WebElement loginPagebtn;

@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AccountPage {
-    WebDriver driver;
-    WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
     @FindBy(xpath = "//a[@class='logout']")
     private WebElement logoutBtn;
     @FindBy(xpath = "//a[@class='account']/span")

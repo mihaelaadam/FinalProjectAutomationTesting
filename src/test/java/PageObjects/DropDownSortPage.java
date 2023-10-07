@@ -12,9 +12,9 @@ import java.time.Duration;
 import java.util.List;
 
 public class DropDownSortPage {
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private Actions actions;
 
     @FindBy(id = "selectProductSort")
     private WebElement openDropDownBtn;
