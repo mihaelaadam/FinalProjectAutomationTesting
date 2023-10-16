@@ -52,5 +52,4 @@ public class RemoveFromCartTest extends BaseTest {
         Assert.assertTrue(loginPage.loginButtonIsDisplayed());
     }
 
-
 }

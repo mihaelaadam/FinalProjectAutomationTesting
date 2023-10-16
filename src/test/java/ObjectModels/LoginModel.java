@@ -31,4 +31,5 @@ public class LoginModel {
                 ", browser:" + account.getBrowser() + "}, passwordError='" + generalError + '\'' +
                 '}';
     }
+
 }

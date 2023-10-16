@@ -6,7 +6,6 @@ public class AccountModel {
     private String password;
     private String browser;
 
-
     public String getEmail() {
         return email;
     }
@@ -17,6 +16,7 @@ public class AccountModel {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -24,6 +24,7 @@ public class AccountModel {
     public String getBrowser() {
         return browser;
     }
+
     public void setBrowser(String browser) {
         this.browser = browser;
     }

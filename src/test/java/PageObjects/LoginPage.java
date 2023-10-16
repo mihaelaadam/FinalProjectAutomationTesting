@@ -22,7 +22,6 @@ public class LoginPage {
     private WebElement passwordInput;
     @FindBy(id = "SubmitLogin")
     private WebElement loginBtn;
-
     @FindBy(xpath = "//div[@class='alert alert-danger']//li")
     private WebElement generalErr;
     @FindBy(xpath = "//input[@id='search_query_top'][1]")
@@ -39,6 +38,7 @@ public class LoginPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
+
     public void goToLoginPage() {
         wait.until(ExpectedConditions.elementToBeClickable(loginPagebtn));
         loginPagebtn.click();
@@ -51,6 +51,7 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(searchBtn));
         searchBtn.click();
     }
+
     public void login(String email, String pass) {
         wait.until(ExpectedConditions.elementToBeClickable(emailInput));
         emailInput.clear();
@@ -59,6 +60,7 @@ public class LoginPage {
         passwordInput.sendKeys(pass);
         loginBtn.click();
     }
+
     public String getGeneralErr() {
         try {
             return generalErr.getText();
@@ -66,6 +68,7 @@ public class LoginPage {
             return "";
         }
     }
+
     public boolean loginButtonIsDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(loginPagebtn));
         return loginPagebtn.isDisplayed();
@@ -75,6 +78,7 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(loginPagebtn));
         return loginPagebtn.getText();
     }
+
     public String getSuccesSearch() {
         wait.until(ExpectedConditions.visibilityOf(succesSearch));
         return succesSearch.getText();

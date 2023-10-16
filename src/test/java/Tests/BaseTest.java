@@ -8,11 +8,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
-
 public class BaseTest {
     public WebDriver driver;
-    String baseUrl;
-    String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
+    public String baseUrl;
+    public String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
 
     @BeforeClass
     public void setUp() {
@@ -23,7 +22,6 @@ public class BaseTest {
         dbPassword = ConfigUtils.getGenericElement(ConstantUtils.CONFIG_FILE, "dbPassword");
         dbSchema = ConfigUtils.getGenericElement(ConstantUtils.CONFIG_FILE, "dbSchema");
     }
-
 
     public void setUpDriver(String browserName) {
         String browser = browserName;
@@ -43,6 +41,7 @@ public class BaseTest {
             driver.quit();
         }
     }
+
     @AfterClass(alwaysRun = true)
     public void afterTest() {
         System.out.println("Close browser");

@@ -27,6 +27,7 @@ public class AccountPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
+
     public void submitLogoutPage() {
         wait.until(ExpectedConditions.visibilityOf(logoutBtn));
         logoutBtn.click();
@@ -36,10 +37,10 @@ public class AccountPage {
         wait.until(ExpectedConditions.visibilityOf(name));
         return name.getText();
     }
+
     public String getLogoutBtn() {
         wait.until(ExpectedConditions.visibilityOf(logoutBtn));
         return logoutBtn.getText();
     }
-
 
 }

@@ -22,13 +22,10 @@ public class LogoutTest extends BaseTest {
         Collection<Object[]> dp = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src\\test\\resources\\Data\\datafortests.json");
-
         ArrayList<HashMap<String, String>> jsonData = objectMapper.readValue(file, ArrayList.class);
-
         for (HashMap<String, String> data : jsonData) {
             dp.add(new Object[]{data.get("email"), data.get("password")});
         }
-
         return dp.iterator();
     }
 

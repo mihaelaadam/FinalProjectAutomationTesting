@@ -11,11 +11,9 @@ import org.testng.annotations.Test;
 
 public class RegistrationTest extends BaseTest {
 
-    LoginPage loginPage;
-    RegistrationPage registrationPage;
-    AccountPage accountPage;
-
-
+    private LoginPage loginPage;
+    private RegistrationPage registrationPage;
+    private AccountPage accountPage;
 
     @DataProvider(name = "registerEmailNDp")
     public Object[][] registerEmailNegativeDp() {
@@ -25,6 +23,7 @@ public class RegistrationTest extends BaseTest {
                 {"soare@yahoo.com","edge", "Exista deja un cont cu aceeasi adresa de e-mail. Introdu parola sau cere una noua."}
         };
     }
+
     @DataProvider (name = "registerEmailPDp")
     public Object[][] registerEmailPositiveDP() {
         return new Object[][] {
@@ -39,9 +38,9 @@ public class RegistrationTest extends BaseTest {
                 {"emil.panda@yahoo.com", "Emil", "Panda", "", "firefox", "", "", "passwd"},
                 {"emil.panda@yahoo.com", "", "Panda", "Parola", "firefox", "prenume", "", ""},
                 {"emil.panda@yahoo.com", "", "", "", "edge", "prenume", "nume_de_familie", "passwd"}
-
         };
     }
+
     @DataProvider (name = "registerAccountPDp")
     public Object[][] registerInfoPositiveDp() {
         return new Object[][]{
@@ -64,6 +63,7 @@ public class RegistrationTest extends BaseTest {
         System.out.println("Insert email finished, verify error message");
         Assert.assertEquals(emailRegisterError, registrationPage.getEmailRegisterError());
     }
+
     @Test (dataProvider = "registerEmailPDp")
     public void registerPositiveEmail(String emailRegister, String browser) throws InterruptedException {
         System.out.println("Login with email: " + emailRegister + " => on browser: " + browser);
@@ -79,7 +79,6 @@ public class RegistrationTest extends BaseTest {
         Assert.assertEquals(emailRegister, registrationPage.getEmailInput());
         System.out.println("Expected: " + emailRegister + ", Actual: " + registrationPage.getEmailInput());
     }
-
 
     @Test (dataProvider = "registerAccountNDp")
     public void insertAccountDetailsNegativeDp(String emailReg, String firstName, String lastName, String password, String browser, String firstNameErr, String lastNameErr, String passwdErr) {

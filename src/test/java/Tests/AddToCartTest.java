@@ -10,9 +10,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AddToCartTest extends BaseTest {
-    LoginPage loginPage;
-    AddToCartPage addToCartPage;
-    AccountPage accountPage;
+    private LoginPage loginPage;
+    private AddToCartPage addToCartPage;
+    private AccountPage accountPage;
 
     @DataProvider(name = "loginForTests")
     public Object[][] loginForTestsDp() {
@@ -48,7 +48,6 @@ public class AddToCartTest extends BaseTest {
         accountPage.submitLogoutPage();
         System.out.println("Logout finished");
         Assert.assertTrue(loginPage.loginButtonIsDisplayed());
-
     }
 
 }

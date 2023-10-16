@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 public class DropDownSortTest extends BaseTest {
     LoginPage loginPage;
     DropDownSortPage dropDownSortPage;
+
     @Test
     public void sortByPrice() {
         String browserName = ConfigUtils.getGenericElement(ConstantUtils.CONFIG_FILE, "browser");
@@ -24,6 +25,6 @@ public class DropDownSortTest extends BaseTest {
         dropDownSortPage.openDropDownList(1);
         dropDownSortPage.selectedElementIsDisplayed();
         Assert.assertEquals(dropDownSortPage.getDropDownOption(1), dropDownSortPage.getSelectedDropDownOption(),"Incorrect drop down option selected");
-
     }
+
 }

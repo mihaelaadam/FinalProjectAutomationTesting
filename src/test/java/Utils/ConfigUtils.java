@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class ConfigUtils {
-
     public static String getGenericElement(String configFile, String propertyName, String defaultValue) {
         String results = defaultValue;
         try {
@@ -17,10 +16,10 @@ public class ConfigUtils {
         }
         return results;
     }
+
     public static String getGenericElement(String configFile, String propertyName) {
         return getGenericElement(configFile, propertyName, "");
 
     }
-
 
 }

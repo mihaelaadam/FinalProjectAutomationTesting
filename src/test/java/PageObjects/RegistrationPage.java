@@ -15,7 +15,6 @@ public class RegistrationPage {
     private WebDriver driver;
     private WebDriverWait wait;
     private Actions actions;
-
     @FindBy(xpath = "//input[@id='email_create']")
     private WebElement emailRegister;
     @FindBy(xpath = "//button[@id='SubmitCreate']/span")
@@ -32,7 +31,6 @@ public class RegistrationPage {
     private WebElement termsBtn;
     @FindBy(id = "submitAccount")
     private WebElement submitRegistrationBtn;
-
     @FindBy(xpath = "//div[@id='create_account_error']/ol/li")
     private WebElement errorListItem;
     @FindBy(xpath = "//div[@class='alert alert-danger']//b[contains(text(),'prenume')]")
@@ -42,14 +40,12 @@ public class RegistrationPage {
     @FindBy(xpath = "//div[@class='alert alert-danger']//b[contains(text(),'passwd')]")
     private WebElement passwordRegisterError;
 
-
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
         actions = new Actions(driver);
     }
-
 
     public void submitRegistrationPage() {
         wait.until(ExpectedConditions.elementToBeClickable(submitRegistrationBtn));
@@ -73,7 +69,6 @@ public class RegistrationPage {
     public void clickTermsCheckbox() {
         wait.until(ExpectedConditions.elementToBeClickable(termsBtn));
         termsBtn.click();
-
     }
 
     public void register(String firstName, String lastName, String passwordReg) {
@@ -86,7 +81,6 @@ public class RegistrationPage {
         passwordRegister.sendKeys(passwordReg);
     }
 
-
     public String getFirstNameError() {
         try {
             return firstNameError.getText();
@@ -94,6 +88,7 @@ public class RegistrationPage {
             return "";
         }
     }
+
     public String getLastNameError() {
         try {
             return lastNameError.getText();
@@ -101,6 +96,7 @@ public class RegistrationPage {
             return "";
         }
     }
+
     public String getPasswordRegisterError() {
         try {
             return passwordRegisterError.getText();
@@ -108,6 +104,7 @@ public class RegistrationPage {
             return "";
         }
     }
+
     public String getEmailRegisterError() {
         try {
             return errorListItem.getText();
@@ -115,6 +112,7 @@ public class RegistrationPage {
             return "";
         }
     }
+
     public String getEmailInput() {
         wait.until(ExpectedConditions.visibilityOf(emailInput));
         return emailInput.getAttribute("value");

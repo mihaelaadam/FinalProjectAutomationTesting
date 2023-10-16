@@ -28,6 +28,7 @@ public class DropDownSortPage {
         wait.until(ExpectedConditions.visibilityOf(selectedDropDownOptionElement));
         System.out.println("Selected drop-down option: " + selectedDropDownOptionElement.getText());
     }
+
     public DropDownSortPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -41,9 +42,11 @@ public class DropDownSortPage {
         System.out.println("The drop-down list is displayed: " + dropDownElements.get(dropDownOptionIndex).isDisplayed());
         dropDownElements.get(dropDownOptionIndex).click();
     }
+
     public String getDropDownOption(int dropDownOptionIndex) {
         return dropDownElements.get(dropDownOptionIndex).getText();
     }
+
     public String getSelectedDropDownOption() {
         return selectedDropDownOptionElement.getText();
     }

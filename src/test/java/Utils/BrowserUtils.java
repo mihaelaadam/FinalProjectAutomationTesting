@@ -37,10 +37,10 @@ public class BrowserUtils {
         }
     }
 
-
     private static ChromeOptions getChromeOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         return chromeOptions;
     }
+
 }

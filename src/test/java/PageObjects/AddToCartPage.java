@@ -20,7 +20,6 @@ public class AddToCartPage {
     private WebElement itemAddedInShoppingCart;
     @FindBy(xpath = "//span[@class='step1opc']")
     private WebElement orderCompleted;
-
     @FindBy(xpath = "//div[@id='cart_quantity_button']/a")
     private WebElement addQuantity;
     @FindBy(xpath = "//input[@class='cart_quantity_input']")
@@ -29,7 +28,6 @@ public class AddToCartPage {
     private WebElement removeFromCart;
     @FindBy(xpath = "//span[@class='ajax_cart_no_product']")
     private WebElement cartQty;
-
 
     public void removeCart() {
         wait.until(ExpectedConditions.visibilityOf(removeFromCart));
@@ -45,21 +43,23 @@ public class AddToCartPage {
         wait.until(ExpectedConditions.visibilityOf(shoppingCartBtn));
         shoppingCartBtn.click();
     }
+
     public void addToCartItem() {
         wait.until(ExpectedConditions.visibilityOf(addToCartBtn));
         addToCartBtn.click();
     }
+
     public AddToCartPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
     }
 
-
     public String getItemAddedInShoppingCart() {
         wait.until(ExpectedConditions.visibilityOf(itemAddedInShoppingCart));
         return itemAddedInShoppingCart.getText();
     }
+
     public String getOrderCompleted() {
         wait.until(ExpectedConditions.visibilityOf(orderCompleted));
         return orderCompleted.getText();
@@ -69,6 +69,5 @@ public class AddToCartPage {
         wait.until(ExpectedConditions.visibilityOf(cartQty));
         return cartQty.getText();
     }
-
 
 }
